@@ -7,8 +7,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static peaksoft.util.Util.connect;
-
 public class UserDaoJdbcImpl implements UserDao {
     Util util = new Util();
     ArrayList<User> aiba = new ArrayList<>();

@@ -1,9 +1,5 @@
 package peaksoft;
 
-import peaksoft.dao.UserDao;
-import peaksoft.dao.UserDaoJdbcImpl;
-import peaksoft.model.User;
-import peaksoft.service.UserService;
 import peaksoft.service.UserServiceImpl;
 
 import java.util.Scanner;
@@ -32,6 +28,7 @@ public class Main {
                      String last_name = sc.nextLine();
                      System.out.println("age");
                      byte age = sc.nextByte();
+                     System.out.println(" ");
                      userService.saveUser(name, last_name, age);
                 }
                  if (num==4){
@@ -47,7 +44,6 @@ public class Main {
                  else {
                      System.out.println("");
                  }
-
         }
     }
 
