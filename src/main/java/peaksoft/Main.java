@@ -1,49 +1,55 @@
 package peaksoft;
 
+import peaksoft.service.UserService;
 import peaksoft.service.UserServiceImpl;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+    static UserService user = new UserServiceImpl();
     static UserServiceImpl userService = new UserServiceImpl();
     static Scanner scanner = new Scanner(System.in);
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
 
+
         while (true) {
             sout();
-            int num = scanner.nextInt();
-            if (num==1) {
-                userService.createUsersTable();
+            int ifNum = scanner.nextInt();
+            switch (ifNum) {
+                case 1:
+                    user.createUsersTable();
+                    break;
+                case 2:
+                    user.dropUsersTable();
+                    break;
+                case 3:
+                    try {
+                        scanner.nextLine();
+                        System.out.println("Напишите имя пользователя:");
+                        String name = scanner.nextLine();
+                        System.out.println("Напишите фамилию пользователя:");
+                        String lastName = scanner.nextLine();
+                        System.out.println("Напишите возраст пользователя:");
+                        byte age = scanner.nextByte();
+                        user.saveUser(name, lastName, age);
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case 4:
+                    System.out.println("Напишите идентификатор пользователя:");
+                    int id = scanner.nextInt();
+                    user.removeUserById(id);
+                    break;
+                case 5:
+                    user.getAllUsers().forEach(System.out::println);
+                    break;
+                case 6:
+                    user.cleanUsersTable();
             }
-                 if (num==2) {
-                     userService.dropUsersTable();
-                 }
-                 if (num==3){
-                     System.out.println("Маалымат киргизиниз:");
-                     System.out.println("name");
-                     String name = sc.nextLine();
-                     System.out.println("last_name");
-                     String last_name = sc.nextLine();
-                     System.out.println("age");
-                     byte age = sc.nextByte();
-                     System.out.println(" ");
-                     userService.saveUser(name, last_name, age);
-                }
-                 if (num==4){
-                    long j = sc.nextLong();
-                    userService.removeUserById(j);
-                }
-                 if (num==5) {
-                     System.out.println(userService.getAllUsers());
-                 }
-                 if (num==6){
-                     userService.cleanUsersTable();
-            }
-                 else {
-                     System.out.println("");
-                 }
         }
     }
 
@@ -56,3 +62,4 @@ public class Main {
         System.out.println(" 6 басып таблицанын ичнин тазаланыз ");
     }
 }
+
