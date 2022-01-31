@@ -1,20 +1,14 @@
 package peaksoft;
-
 import peaksoft.service.UserService;
 import peaksoft.service.UserServiceImpl;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class Main {
     static UserService user = new UserServiceImpl();
     static UserServiceImpl userService = new UserServiceImpl();
     static Scanner scanner = new Scanner(System.in);
     static Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) {
-
-
         while (true) {
             sout();
             int ifNum = scanner.nextInt();
